@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+
+{% block title %} {{ item.name }} {% endblock %}
+
+{% block content %}
+    <div class="grid grid-cols-5 gap-6">
+        <div class="col-span-3">
+            <img class="rounded-xl" src="{{ item.image.url }}" alt="{{ item.name }} image loding...">
+        </div>
+
+        <div class="col-span-2 rounded-xl p-6 bg-gray-100">
+            <h1 class="text-2xl font-semibold mb-6">{{ item.name }}</h1>
+            <p><strong>Price: ${{ item.price }}</strong></p>
+            <p><strong>Seller: {{ item.created_by.username }}</strong></p>
+            {% if item.is_sold is False %}
+                <strong class="text-teal-400">Available Now</strong>
+            {% endif %}
+
+            {% if item.description %}
+                <p class="mt-5 mb-6 text-gray-700 text-justify">
+                    <strong>Description:</strong><br>
+                    {{ item.description }}
+                </p>
+            {% endif %}
+
+            <a class="hover:bg-blue-600 rounded-md font-semibold px-4 py-2 text-white bg-teal-400" href="#">Buy Now</a>
+        </div>
+    </div>
+
+    <div class="bg-gray-100 px-6 py-12 mt-5">
+        <h2 class="text-2xl text-center mb-12">Newest Collections</h2>
+    
+        <div class="grid grid-cols-3 gap-6">
+            {% for item in related_items %}
+            <div>
+                <a href="{% url 'item:details' item.id %}">
+                    <div>
+                        <img class="rounded-t-xl" src="{{ item.image.url }}" alt="{{item.name}} image loding...">
+                    </div>
+    
+                    <div class="p-6 bg-white rounded-b-xl">
+                        <h2>{{ item.name }}</h2>
+                        <p>Price: ${{ item.price }}</p>
+                        <p>Details: {{ item.description }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

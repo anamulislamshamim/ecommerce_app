@@ -3,5 +3,40 @@
 {% block title %}home{% endblock %}
 
 {% block content %}
-    <h1>The is the index/front page</h1>
+<div class="bg-gray-100 px-6 py-12">
+    <h2 class="text-2xl text-center mb-12">New Collections</h2>
+
+    <div class="grid grid-cols-3 gap-6">
+        {% for item in items %}
+        <div>
+            <a href="{% url 'item:details' item.id %}">
+                <div>
+                    <img class="rounded-t-xl" src="{{ item.image.url }}" alt="{{item.name}} image loding...">
+                </div>
+
+                <div class="p-6 bg-white rounded-b-xl">
+                    <h2>{{ item.name }}</h2>
+                    <p>Price: ${{ item.price }}</p>
+                    <!-- <p>Details: {{ item.description }}</p> -->
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="bg-gray-100 px-6 py-12">
+    <h2 class="text-2xl text-center mb-12">Available Categories</h2>
+
+    <div class="grid grid-cols-3 gap-6">
+        {% for category in categories %}
+        <a href="#">
+            <div class="p-6 bg-white rounded-b-xl">
+                <h2>{{ category.name }}</h2>
+                <p>{{ category.items.count }} items available</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
