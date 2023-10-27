@@ -16,11 +16,11 @@
             <a href="#" class="text-lg font-semibold hover:text-green-400">New item</a>
             <a href="#" class="text-lg font-semibold hover:text-green-400">Browse</a>
 
+            <a href="{% url 'core:signup' %}"
+                class="text-lg px-6 py-3 rounded-xl font-semibold bg-teal-500 text-white hover:bg-teal-700">Sign
+                up</a>
             <a href="#"
-                class="text-lg px-6 py-3 rounded-xl font-semibold bg-teal-500 text-white hover:text-teal-700">Sign
-                in</a>
-            <a href="#"
-                class="text-lg px-6 py-3 rounded-xl font-semibold bg-gray-500 text-white hover:text-gray-700">Log in</a>
+                class="text-lg px-6 py-3 rounded-xl font-semibold bg-gray-500 text-white hover:bg-gray-700">Log in</a>
         </div>
     </nav>
 
@@ -42,7 +42,7 @@
 
             <ul>
                 <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700 font-semibold">About</a></li>
-                <li><a href="{% url 'contact' %}"
+                <li><a href="{% url 'core:contact' %}"
                         class="text-lg text-teal-500 hover:text-teal-700 font-semibold">Contact</a></li>
                 <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700 font-semibold">Privacy policy</a></li>
                 <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700 font-semibold">Terms of use</a></li>
