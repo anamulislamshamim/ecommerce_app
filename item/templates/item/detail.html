@@ -22,8 +22,16 @@
                     {{ item.description }}
                 </p>
             {% endif %}
-
+            
+            {% if request.user == item.created_by %}
+            <div class="bg-white mt-6 p-6 rounded-b-xl">
+                <p class="mb-5 font-semibold">Do you want to make any changes?</p>
+                <a href="#" class="hover:bg-blue-600 rounded-md font-semibold px-4 py-2 text-white bg-teal-500">Edit</a>
+                <a href="{% url 'item:delete' item.id %}" class="hover:bg-red-800 rounded-md font-semibold px-4 py-2 text-white bg-red-500">Delete</a>
+            </div>
+            {% else %}
             <a class="hover:bg-blue-600 rounded-md font-semibold px-4 py-2 text-white bg-teal-400" href="#">Buy Now</a>
+            {% endif %}
         </div>
     </div>
 
