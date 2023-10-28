@@ -10,17 +10,25 @@
 
 <body>
     <nav class="border-b border-gray-200 px-6 py-6 flex justify-between items-center">
-        <a href="/" class="text-xl font-semibold">e_Shop</a>
+        <a href="/" class="text-2xl font-semibold text-green-400"><span class="text-red-400 font-bold">e</span>_Shop</a>
 
         <div class="space-x-6">
-            <a href="#" class="text-lg font-semibold hover:text-green-400">New item</a>
+            <a href="{% url 'item:new' %}" class="text-lg font-semibold hover:text-green-400">New item</a>
             <a href="#" class="text-lg font-semibold hover:text-green-400">Browse</a>
 
+            {% if request.user.is_authenticated %}
+            <a href="#"
+                class="text-lg px-6 py-3 rounded-xl font-semibold bg-teal-500 text-white hover:bg-teal-700">Inbox
+                </a>
+            <a href="{% url 'dashboard:index' %}"
+                class="text-lg px-6 py-3 rounded-xl font-semibold bg-gray-500 text-white hover:bg-gray-700">Dashboard</a>
+            {% else %}
             <a href="{% url 'core:signup' %}"
                 class="text-lg px-6 py-3 rounded-xl font-semibold bg-teal-500 text-white hover:bg-teal-700">Sign
                 up</a>
-            <a href="#"
+            <a href="{% url 'core:login' %}"
                 class="text-lg px-6 py-3 rounded-xl font-semibold bg-gray-500 text-white hover:bg-gray-700">Log in</a>
+            {% endif %}
         </div>
     </nav>
 

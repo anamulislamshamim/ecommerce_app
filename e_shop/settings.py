@@ -27,6 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# If user have not access to certain page without login then user redirect 
+# to '/login/' url
+LOGIN_URL = '/login/'
+# Redirect user to home page after login successfully
+LOGIN_REDIRECT_URL = '/'
+# If user successfully logout then redirect to '/' url
+LOGOUT_REDIRECT_URL = '/'
 
 # Application definition
 
@@ -38,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'item'
+    'item',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
