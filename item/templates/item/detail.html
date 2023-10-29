@@ -5,7 +5,7 @@
 {% block content %}
     <div class="grid grid-cols-5 gap-6">
         <div class="col-span-3">
-            <img class="rounded-xl" src="{{ item.image.url }}" alt="{{ item.name }} image loding...">
+            <img class="rounded-xl w-full" src="{{ item.image.url }}" alt="{{ item.name }} image loding...">
         </div>
 
         <div class="col-span-2 rounded-xl p-6 bg-gray-100">
@@ -26,7 +26,7 @@
             {% if request.user == item.created_by %}
             <div class="bg-white mt-6 p-6 rounded-b-xl">
                 <p class="mb-5 font-semibold">Do you want to make any changes?</p>
-                <a href="#" class="hover:bg-blue-600 rounded-md font-semibold px-4 py-2 text-white bg-teal-500">Edit</a>
+                <a href="{% url 'item:edit' item.id %}" class="hover:bg-blue-600 rounded-md font-semibold px-4 py-2 text-white bg-teal-500">Edit</a>
                 <a href="{% url 'item:delete' item.id %}" class="hover:bg-red-800 rounded-md font-semibold px-4 py-2 text-white bg-red-500">Delete</a>
             </div>
             {% else %}
@@ -43,7 +43,7 @@
             <div>
                 <a href="{% url 'item:details' item.id %}">
                     <div>
-                        <img class="rounded-t-xl" src="{{ item.image.url }}" alt="{{item.name}} image loding...">
+                        <img class="rounded-t-xl w-full" src="{{ item.image.url }}" alt="{{item.name}} image loding...">
                     </div>
     
                     <div class="p-6 bg-white rounded-b-xl">
